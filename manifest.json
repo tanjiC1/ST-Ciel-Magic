@@ -1,0 +1,9 @@
+{
+    "name": "Ciel's Online Magic",
+    "display_name": "Ciel在线魔法",
+    "version": "1.0.0",
+    "author": "MyWife",
+    "description": "这是我通过GitHub远程安装的第一个插件！",
+    "loading_order": 100,
+    "requires": []
+}
