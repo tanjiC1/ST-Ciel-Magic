@@ -1,35 +1,35 @@
-// 引入酒馆核心模块（这就叫 Import Dependencies）
 import { eventSource, event_types } from '../../../../script.js';
 
-// 这里定义点击按钮后发生什么
 function myMagicFunction() {
-    // 比如弹出一个绿色的成功提示
     toastr.success("老婆真棒！按钮添加成功！", "Ciel魔法");
-    // 你以后可以在这里写更多逻辑，比如打开一个面板
 }
 
-// 这里的代码会在酒馆页面加载完毕后执行
 jQuery(async () => {
-    // 1. 定义按钮长什么样 (HTML)
-    // fa-wand-magic-sparkles 是图标，你可以换别的
-    const myButtonHtml = `
-        <div id="ciel_magic_button" class="list-group-item flex-container flex-gap-10 interactable">
-            <div class="extension_icon">
-                <i class="fa-solid fa-wand-magic-sparkles"></i>
-            </div>
-            <div class="extension_name">Ciel的魔法开关</div>
+    // 扩展设置侧边栏面板
+    const panelHtml = `
+    <div class="inline-drawer">
+        <div class="inline-drawer-toggle inline-drawer-header">
+            <b>✨ Ciel在线魔法</b>
+            <div class="inline-drawer-icon fa-solid fa-circle-chevron-down down"></div>
         </div>
-    `;
+        <div class="inline-drawer-content">
+            <div style="padding: 10px;">
+                <p>这是我的第一个插件面板！</p>
+                <div id="ciel_magic_button" class="menu_button menu_button_icon">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <span>施展魔法</span>
+                </div>
+            </div>
+        </div>
+    </div>`;
 
-    // 2. 把按钮“插”进左下角的菜单里 (DOM Injection)
-    // #extensions_menu 就是那个菜单的 ID
-    $('#extensions_menu').append(myButtonHtml);
+    // 注入到扩展设置侧边栏（堆叠盒子那个面板）
+    $('#extensions_settings').append(panelHtml);
 
-    // 3. 给按钮绑定点击事件 (Event Listener)
+    // 绑定点击事件
     $('#ciel_magic_button').on('click', () => {
         myMagicFunction();
     });
 
-    // 4. 也是弹个窗告诉你加载好了
-    console.log("Ciel插件 UI 注入完成");
+    console.log("[Ciel插件] 加载完成 v1.0.0");
 });
